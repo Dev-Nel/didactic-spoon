@@ -1,6 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
-    background: url(6f05fcf25fee70a874a5a275c8105693.jpg);
+    font-family: Arial, sans-serif
+    background: linear-gradient(90deg, hsla(279, 58%, 72%, 1) 0%, hsla(318, 73%, 68%, 1) 100%);
     margin: 0;
     padding: 0;
 }
