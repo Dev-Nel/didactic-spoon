@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auction Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <h2>Add User</h2>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <button class="hehehe" onclick="addUser()">Add User</button>
+            </div>
+            <h2>Auction</h2>
+            
+            <div class="form-group">
+                <label for="item">Item:</label>
+                <select id="item" name="item" onchange="updateItemImage()">
+                    <option value="apple">Apple</option>
+                    <option value="banana">Banana</option>
+                    <option value="carrot">Carrot</option>
+                    <option value="iphone">Iphone</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <div id="apple-image" class="item-image" style="display:none;">
+                    <img src="srj.ong" alt="Apple" style="width:100px;height:100px;">
+                </div>
+                <div id="banana-image" class="item-image" style="display:none;">
+                    <img src="0.png" alt="Banana" style="width:100px;height:100px;">
+                </div>
+                <div id="carrot-image" class="item-image" style="display:none;">
+                    <img src="yheti.png" alt="Carrot" style="width:100px;height:100px;">
+                </div>
+                <div id="iphone-image" class="item-image" style="display:none;">
+                    <img src="iphone.png" alt="Iphone" style="width:100px;height:100px;">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="bid">Bid Amount:</label>
+                <input type="number" id="bid" name="bid">
+            </div>
+            <div class="form-group">
+                <button class="hehehe" onclick="placeBid()">Place Bid</button>
+            </div>
+            <div class="auction-list" id="auction-list">
+                <!-- Auction items will be listed here -->
+            </div>
+            <div id="winner" style="display:none; margin-top: 20px;">
+                <h2>Winner</h2>
+                <p id="winner-name"></p>
+                <img id="winner-gif" src="https://media.giphy.com/media/6xkKLjibAo3PKrHaNY/giphy.gif?cid=ecf05e4763jpiew37toi183pofmea4z8zdcskhg52k5tki0i&ep=v1_stickers_search&rid=giphy.gif&ct=ts" alt="Winner GIF" style="width:200px;height:200px;">
+            </div>
+            <script>
+                function updateItemImage() {
+                    // Hide all images first
+                    const allImages = document.querySelectorAll('.item-image');
+                    allImages.forEach(img => {
+                        img.style.display = 'none';
+                    });
+
+                    // Get the selected item from the dropdown
+                    const selectedItem = document.getElementById('item').value;
+
+                    // Show the selected item's image
+                    const selectedImage = document.getElementById(`${selectedItem}-image`);
+                    if (selectedImage) {
+                        selectedImage.style.display = 'block';
+                    }
+                }
+
+                function showWinner() {
+                    if (auctionItems.length > 0) {
+                        const highestBid = auctionItems.reduce((max, item) => item.bid > max.bid ? item : max, auctionItems[0]);
+                        document.getElementById('winner-name').innerText = `Item: ${highestBid.item}, Bid: $${highestBid.bid}`;
+                        document.getElementById('winner').style.display = 'block';
+                    } else {
+                        alert('No bids placed.');
+                    }
+                }
+
+                setTimeout(showWinner, 60000); // 1 minute = 60000 milliseconds
+            </script>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
