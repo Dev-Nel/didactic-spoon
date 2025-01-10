@@ -3,6 +3,7 @@ body {
     background: linear-gradient(90deg, hsla(279, 58%, 72%, 1) 0%, hsla(318, 47%, 67%, 1) 100%);
     margin: 0;
     padding: 0;
+    color: #fff;
 }
 .container {
     width: 80%;
